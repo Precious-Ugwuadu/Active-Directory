@@ -49,7 +49,13 @@ A virtual network and a subnet.
 
 ![image](https://github.com/user-attachments/assets/87b5c79e-be2a-40df-a29d-f73414ccc3b3)
 
-And a Windows Server 2022 virtual machine and name it “DC-1” to serve as the Domain Controller. for the Image setting i  made sure to choose "Windows Server 2025 Datacenter: Azure Edition - x64 Gen2" to  ensures i get the latest features, performance, and security updates for enterprise-grade domain services in Azure.
+And a Windows Server 2022 virtual machine and named it “DC-1” to serve as the Domain Controller. for the Image setting i  made sure to choose "Windows Server 2025 Datacenter: Azure Edition - x64 Gen2" to  ensures i get the latest features, performance, and security updates for enterprise-grade domain services in Azure.
+
+![image](https://github.com/user-attachments/assets/057aa27e-fad6-404d-998e-d206d9ca447e)
+
+I created another VM and named it "Client-1" and i set the image as "Windows 10 Pro, version 22H2 - x64 Gen2" to create a client machine that simulates a typical end-user workstation. This will allows me to join the domain, test user login, apply Group Policies, and verify Active Directory functionality from a user perspective.
+
+![image](https://github.com/user-attachments/assets/725fdaaf-2397-4939-9eaf-b00024c77463)
 
 </p>
 <br />
@@ -58,8 +64,12 @@ And a Windows Server 2022 virtual machine and name it “DC-1” to serve as the
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
+
+![image](https://github.com/user-attachments/assets/54d7e80a-97c7-4dd8-bd2a-db3b6eb18f31)
+
+  
+I copied the public IP address of dc-1 and connected to remote desktop. And i was logged into Server Manager.
+
 <br />
 
 <p>
