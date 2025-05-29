@@ -61,7 +61,6 @@ I created another VM and named it "Client-1" and i set the image as "Windows 10 
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
 
@@ -71,6 +70,18 @@ I created another VM and named it "Client-1" and i set the image as "Windows 10 
 I copied the public IP address of dc-1 and connected to remote desktop. And i was logged into Server Manager.
 
 <br />
+
+ ![image](https://github.com/user-attachments/assets/7a45f566-d78e-467a-9c2c-69846265290d) 
+
+I right clicked the start button and clicked on "RUN" and typed "wf.msc" for windows firewall.
+
+![image](https://github.com/user-attachments/assets/69f95c12-584a-46b4-bd53-d5867370c888)
+
+I cliked on windows defender firewall and turned of the firewall state of Domain profile and Private profile.
+
+![image](https://github.com/user-attachments/assets/64f7ae0e-a317-4b3b-b251-ffea3ff6e0e3)
+
+I went back to Azure portal and copied the priviate IP address of dc-1 , i went to networking, network settings, clicked on ipconfig1 (primary) on the left i clicked on DNS Servers and changed it from inherit to custom and pasted the private IP address of dc-1 and this will change it from Vnet DNS Server to dc-1. whenever the computer want to search for anything on the web it looks to dc-1 for it. This rocess will allow me to join the domain. 
 
 <p>
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
