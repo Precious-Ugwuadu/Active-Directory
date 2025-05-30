@@ -83,6 +83,14 @@ I cliked on windows defender firewall and turned of the firewall state of Domain
 
 I went back to Azure portal and copied the priviate IP address of dc-1 , i went to networking, network settings, clicked on ipconfig1 (primary) on the left i clicked on DNS Servers and changed it from inherit to custom and pasted the private IP address of dc-1 and this will change it from Vnet DNS Server to dc-1. whenever the computer want to search for anything on the web it looks to dc-1 for it. This rocess will allow me to join the domain. 
 
+![image](https://github.com/user-attachments/assets/9e874d27-86e3-4c95-9aff-3825fb7d94e9)
+
+I Copied the public IP address of client-1 and log into remote desktop and Tried pinging the private IP address of DC-1 and it was successful. 
+
+![image](https://github.com/user-attachments/assets/66b676ba-46ad-45d0-88c8-2b92236c95e5)
+
+On Client-1 in remote desktop, i opened PowerShell and run the command ipconfig /all. This will display the network configuration, and under DNS Servers, you should see the private IP address of DC-1, confirming that Client-1 is using it for DNS resolution.
+
 <p>
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
