@@ -107,9 +107,10 @@ Check the start destination service automatically if required, and install.
 
 ![image](https://github.com/user-attachments/assets/b914c48b-19ff-4088-b3c0-e2fb83a2992d)
 
-![image](https://github.com/user-attachments/assets/72427a18-638f-4083-a6a8-b9d93637792a)
+After the installation, I will promote DC-1 as an actual domain controller by configuring it in the "new forest." I will click on the above yellow bar to add the forest  and the root domain name: mydomain.com, and complete the configuration.
 
-After the installation, I will promote DC-1 as an actual domain controller by configuring it in the "new forest" I will click on the above yellow bar
+![image](https://github.com/user-attachments/assets/b442272c-f3a5-4878-94c0-32d80475ac8a)
+
 
 
 
