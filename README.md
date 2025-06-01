@@ -109,11 +109,43 @@ Check the start destination service automatically if required, and install.
 
 After the installation, I will promote DC-1 as an actual domain controller by configuring it in the "new forest." I will click on the above yellow bar to add the forest  and the root domain name: mydomain.com, and complete the configuration.
 
-![image](https://github.com/user-attachments/assets/b442272c-f3a5-4878-94c0-32d80475ac8a)
+![image](https://github.com/user-attachments/assets/988a86c1-b7a2-4954-9700-b6e0dc9fffc3)
 
+After completing the configuration, the system automatically logged me out. To log back in, I needed to use domain credentials, so I entered the username in this format: mydomain.com\labuser, which tells the system to log me in as a user from the domain instead of the local machine.
 
+![image](https://github.com/user-attachments/assets/b00f26db-deb8-40f5-9032-1ab76100ad3f)
 
+In Active Directory Users and Computers (ADUC), I created two Organizational Units (OUs) named _EMPLOYEES and _ADMINS. To do this, I clicked Start > Windows Administrative Tools > Active Directory Users and Computers, then right-clicked on mydomain.com, selected New > Organizational Unit, entered the name, and clicked OK. I repeated the same steps to create the second OU.
 
+![image](https://github.com/user-attachments/assets/ea2e96ba-300c-4c79-988d-31d92edff569)
+
+Next, I Created a new employee named “Jane Doe” with the username of “jane_admin” by clicking on _ADMINS > Right click the empty space >  New > User and fill out the necessary details.
+
+![image](https://github.com/user-attachments/assets/bdeedaaa-51f2-4cc9-9258-9a68a267e19f)
+
+This account is not yet an admin, to make it one i will Add jane_admin to the “Domain Admins” Security Group to give it full administrative access across the domain. By right clicking account > Properties > member of > Add > "Domain Admins > Check name > OK > Apply > OK. This process made it an actual admin. 
+
+I closed the connection to DC-1 and log back in as “mydomain.com\jane_admin” To do this: I Open Remote Desktop Connection (RDC) Clicked on  Edit > More Choices > Use a Different Account, Entered my username: “mydomain.com\jane_admin”  and my password, then OK. This successfully logged me in as the domain admin.
+
+![image](https://github.com/user-attachments/assets/261c2ab6-bd9a-4ea7-a8d7-103b4f08e6f9)
+
+I went back to Azure, copied the public IP address of Client-1 and logged into remote desktop. I right clicked on the start button > System > Rename this PC (advanced) > computer name > Change > Domain > mydomain.com
+
+![image](https://github.com/user-attachments/assets/a1f3ee37-f865-413b-ba52-c1dfccb7903e)
+
+I typed in my credentials “mydomain.com\jane_admin” and my password > ok. And i was able to join the domain.
+
+![image](https://github.com/user-attachments/assets/1a5ec3a9-a2ff-4369-94ef-3ecf8f69634d)
+
+I got this pop up message and this will restart my PC to join the domain and we it comes back on it will be a member of the domain.
+
+![image](https://github.com/user-attachments/assets/f8f207b5-3382-4eed-901d-0441f46efe89)
+
+I Logged into the Domain Controller and verify Client-1 shows up in ADUC. HOW: I opened RDC > logged in as DC-1 using it's public IP address from Azure, once i sucessfully logged in i Clicked on start > Active Directory Users and Computers > expand mydomain.com > Computers then i can see Client-1.
+
+![image](https://github.com/user-attachments/assets/20754af4-d132-4ff9-ad60-4c2bfc645d53)
+
+I double clicked it and i can see the fully qualified name of Client-1. Create a new OU named “_CLIENTS” and drag Client-1 into there
 </p>
 <p>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
