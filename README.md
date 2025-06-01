@@ -141,13 +141,58 @@ I got this pop up message and this will restart my PC to join the domain and we 
 
 ![image](https://github.com/user-attachments/assets/f8f207b5-3382-4eed-901d-0441f46efe89)
 
-I Logged into the Domain Controller and verify Client-1 shows up in ADUC. HOW: I opened RDC > logged in as DC-1 using it's public IP address from Azure, once i sucessfully logged in i Clicked on start > Active Directory Users and Computers > expand mydomain.com > Computers then i can see Client-1.
+I Logged into the Domain Controller and verify Client-1 shows up in ADUC.
+HOW TO: 
+I opened RDC > logged in as DC-1 using it's public IP address from Azure, once i sucessfully logged in i Clicked on start > Active Directory Users and Computers > expand mydomain.com > Computers then i can see Client-1.
 
 ![image](https://github.com/user-attachments/assets/20754af4-d132-4ff9-ad60-4c2bfc645d53)
 
-I double clicked it and i can see the fully qualified name of Client-1. Create a new OU named “_CLIENTS” and drag Client-1 into there
+I double clicked it and i can see the fully qualified name of Client-1. Create a new OU named “_CLIENTS” and drag Client-1 into it. 
+
+![image](https://github.com/user-attachments/assets/de376515-1c20-4bc6-8ace-d51f3bb7c98b)
+
+The next step is to Setup Remote Desktop for non-administrative users on Client-1. 
+HOW TO:
+Open Remote Desktop Connection (RDC) > Click on Show Options > Enter your username: mydomain.com\jane_admin Click on connect >  Enter your password: > Click on Yes and This successfully logged me in. 
+
+![image](https://github.com/user-attachments/assets/6d588919-7364-460c-b520-f1f4f158b295)
+
+I right clicked the start menu > System > Remote Desktop 
+
+![image](https://github.com/user-attachments/assets/bdb0741b-ac1e-4fb0-97c0-681d5c506f47)
+
+Allow “domain users” access to remote desktop
+HOW TO:
+From the above image click on > Select users that can remotely access this pc > Add > Type Domain Amins > Check Names > Type Domain Users (Which means all users counts by default)  > Check Names > OK > Click on MYDOMAIN\Domain Users > OK.
+
+![image](https://github.com/user-attachments/assets/145131f2-0c8e-4d41-a8c5-0d7cf35b7f05)
+
+Next, I Created several additional user accounts, then try logging into Client-1 using one of those accounts.
+HOW TO:
+Go to remote desktop and log in as DC-1. Search for Windows PowerShell ISE > Right Click it > Run as Adminstrator > Yes. Once PowerShell is open > Click on File > New > Open the Script https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1 > save it as > Create-users > Paste the Script
+
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  
+![image](https://github.com/user-attachments/assets/2fcb63e2-28be-4889-85c3-e7227cf12ab2)
+
+The Script will start creating alot of users.
+
+![image](https://github.com/user-attachments/assets/2b186b18-a8d4-4cb0-a9b3-cffe0c9bfd58)
+
+Once done, open Active Directory Users and Computers (ADUC) and verify that the accounts are listed under the _EMPLOYEES Organizational Unit.
+
+I Signed in to Client-1 using one of the user accounts, making sure to use the correct password: "Password1" provided in the script.
+HOW TO:
+Go to Remote desktop
+nid.xis
+
+![image](https://github.com/user-attachments/assets/13a5df9b-68f0-47ca-95d2-d7ad0c717705)
+
+After logging in, I opened powershell and i can see "nid.xis
+
+![image](https://github.com/user-attachments/assets/d3dd2844-f1ca-41d8-9985-233ee71f3e7f)
+
+I also went to folder > This PC > Windows C: > Users > and i can see all the profiles of all the local users i logged into.
 </p>
 <br />
