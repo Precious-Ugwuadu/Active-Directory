@@ -194,5 +194,60 @@ After logging in, I opened powershell and i can see "nid.xis
 ![image](https://github.com/user-attachments/assets/d3dd2844-f1ca-41d8-9985-233ee71f3e7f)
 
 I also went to folder > This PC > Windows C: > Users > and i can see all the profiles of all the local users i logged into.
-</p>
+
+![image](https://github.com/user-attachments/assets/4e669c8c-853b-4e23-a8f8-463ed9974ccb)
+
+Handling Account Lockouts:
+Log in to DC-1. Choose any user account you created earlier. Try logging in with that account using an incorrect password 10 times to trigger an account lockout.
+HOW TO:
+Use DC-1 publick IP address from Azure and log into Remote Desktop > Active Directory Users and Computers > _EMPLOYEES > Pick any name (bad.vew) > log in with wrong password > after 10 attempts, i was logged out. But i had to configure account lockout policy first in Active Directory.
+
+![image](https://github.com/user-attachments/assets/8dcbc822-5f42-4eff-b193-2264dfe4c531)
+
+HOW TO:
+Go to DC-1 > Click start and type gpmc.msc > i saw the above image > Edit the Default Domain Policy > Navigate to
+Computer Configuration > Policies > Windows Settings > Security Settings > Account Policies > Account Lockout Policy
+
+![image](https://github.com/user-attachments/assets/3bfac286-6049-453e-8149-b8ada2b96301)
+
+Set:
+Account lockout threshold (5 invalid attempts) > Account lockout duration (30 minutes) > Reset account lockout counter after (10 minutes) > Click Apply and OK. This policy will apply to all domain users once updated. 
+
+![image](https://github.com/user-attachments/assets/42fb3c10-3afc-49d4-86e8-d7b2469709b4)
+
+Run gpupdate /force to apply it immediately. 
+
+![image](https://github.com/user-attachments/assets/c6c69af4-f736-4669-aa08-cf3b1924d130)
+
+Next, I will Observe that the account has been locked out within Active Directory. Unlock the account, Reset the password, Attempt to login with it. 
+HOW TO:
+On DC-1, open Active Directory Users and Computers (ADUC) > Find and double-click the locked user account > Go to the Account tab — you’ll see it's locked > Uncheck "Account is locked out" to unlock it > Click Reset Password, enter a new password, and click OK > Try logging in with the updated password — it should work.
+
+
+
+Next, Enabling and Disabling Accounts > Disable the same account in Active Directory > Attempt to login with it, observe the error message > Re-enable the account, then attempt to log in again to confirm access is restored.
+
+![image](https://github.com/user-attachments/assets/64e8a1c8-6bd5-4594-bf74-bd0513a4df26)
+
+To Disable an Account:
+Open ADUC on DC-1 > Find the user account (e.g., under _EMPLOYEES OU) > Right-click the account and select Disable Account > A small red down-arrow will appear on the user icon, showing it’s disabled.
+
+![image](https://github.com/user-attachments/assets/41456383-1df7-418d-88e2-7719ebc4346e)
+
+To Attempt Login:
+Try logging in with the disabled account on Client-1 > You’ll see an error message like > “Your account has been disabled. Please see your system administrator.”
+To Re-enable the Account:
+Back in ADUC, right-click the same user account > Select Enable Account > Try logging in again — it should work now.
+
+![image](https://github.com/user-attachments/assets/aa31c5c3-b030-4015-b7a6-783fc7e3a784)
+
+Finally Viewing Logs:
+Check the event logs on the Domain Controller. Review the event logs on the Client machine as well.
+HOW TO:
+On Domain Controller (DC-1) > Press Windows + R, type eventvwr.msc, and press Enter > In Event Viewer, go to: Windows Logs > Security or System > to view login attempts, lockouts, and system events.
+
+On Client Machine (Client-1):
+Do the same: Press Windows + R, type eventvwr.msc, and hit Enter > Check Windows Logs > Security or System to see login attempts and error messages. This helps track user actions and troubleshoot issues.
+
+</p> >
 <br />
